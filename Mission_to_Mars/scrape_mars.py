@@ -101,8 +101,8 @@ def get_featured_img():
 # get mars weather as a string
 def get_weather(): 
     #visit twitter page to get weather
-    browser = init_browser()
     url_twitter = 'https://twitter.com/marswxreport?lang=en'
+    browser = init_browser()
     browser.visit(url_twitter)
     time.sleep(1)
 
@@ -115,6 +115,8 @@ def get_weather():
     text = tweet.contents[0]
     #clean string up 
     mars_weather = text.replace('\n', ' ')
+
+    browser.quit()
     return mars_weather
 
 #return html string
@@ -130,6 +132,8 @@ def get_facts():
     df = df_list[0]
     df.columns = ['Property', 'Value']
     string = df.to_html()
+
+    browser.quit()
     return string
 
 #return a list of dictionaries for mars hemispheres and their images
@@ -184,6 +188,7 @@ def get_hemi():
             "img_url" : u,
         }
         list_dict.append(hemi_dict)
+    browser.quit()
     return list_dict
 
 
