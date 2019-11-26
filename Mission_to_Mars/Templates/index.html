@@ -10,15 +10,55 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="jumbotron text-center">
-      <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
+ 
+  
+    
+  <div class="container-fluid" style="background:#d6d7da">
+      <h1 class = "text-center">Mission to Mars</h1>
+      <div class = "col text-center">
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
+      </div>
+      
     </div>
-    <h2>Featured Mars Image</h2>
-    <img src="{{ mars_data.featured_img }}" alt="Sloth">
-  </div>
-  </div>
+   
+  <!-- Creates the Overall Grid -->
+<div class="container">
+    
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="col-lg-7">
+          <div class="container-fluid" style="background:#ffffff">
+              <h1 class = "text-center">Latest Mars News</h1>
+              <h2> {{ mars.news[0] }}</h2>
+              <p> {{ mars.news[1] }}</p>
+              
+            </div>
+          
+      </div>
+
+    <!-- Row 3 -->
+  <div class="row">
+    <div class="col-lg-6">
+        <div class="container-fluid" style="background: #ffffff;">
+            <h1 class = "text-center">Featured Mars Image</h1>
+            <div class = "w-25 p-3">
+              <img src="{{ mars.featured_img }}" class="img-thumbnail"/> 
+              
+            </div> 
+          </div>
+        </div>
+    
+    <div class="col-lg-5">
+        <div class="container-fluid" style = "border:1px solid #636363">
+            <h1 class = "text-center">Current Weather on Mars</h1>
+            <p> {{ mars.weather }}</p>
+            <h1> Mars Facts</h1>
+             <!-- Render table with safe argument to allow correct rendering -->
+            {{mars.facts | safe}}
+            </div> 
+          </div>
+    </div>
+
 </body>
 
 </html>
